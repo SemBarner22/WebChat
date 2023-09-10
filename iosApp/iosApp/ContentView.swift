@@ -4,7 +4,8 @@ import shared
 
 struct ComposeView: UIViewControllerRepresentable {
     func makeUIViewController(context: Context) -> UIViewController {
-        Main_iosKt.MainViewController()
+        var sdk = SpaceXSDK(DatabaseDriverFactory())
+        Main_iosKt.MainViewController(sdk)
     }
 
     func updateUIViewController(_ uiViewController: UIViewController, context: Context) {}

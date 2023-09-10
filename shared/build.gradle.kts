@@ -10,6 +10,7 @@ val coroutinesVersion = "1.7.1"
 val ktorVersion = "2.3.2"
 val sqlDelightVersion = "1.5.5"
 val dateTimeVersion = "0.4.0"
+val voyagerVersion = "1.0.0-rc05"
 
 kotlin {
     androidTarget()
@@ -41,7 +42,7 @@ kotlin {
                 implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
                 implementation("com.squareup.sqldelight:runtime:$sqlDelightVersion")
                 implementation("org.jetbrains.kotlinx:kotlinx-datetime:$dateTimeVersion")
-
+                implementation("cafe.adriel.voyager:voyager-navigator:$voyagerVersion")
             }
         }
         val androidMain by getting {
@@ -49,8 +50,9 @@ kotlin {
                 api("androidx.activity:activity-compose:1.7.2")
                 api("androidx.appcompat:appcompat:1.6.1")
                 api("androidx.core:core-ktx:1.10.1")
-                implementation("io.ktor:ktor-client-okhttp:$ktorVersion")
-                implementation("com.squareup.sqldelight:android-driver:$sqlDelightVersion")
+                api("org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion")
+                api("io.ktor:ktor-client-okhttp:$ktorVersion")
+                api("com.squareup.sqldelight:android-driver:$sqlDelightVersion")
             }
         }
         val iosX64Main by getting
@@ -71,6 +73,7 @@ kotlin {
                 implementation(compose.desktop.common)
                 implementation("io.ktor:ktor-client-java:$ktorVersion")
                 implementation("com.squareup.sqldelight:sqlite-driver:$sqlDelightVersion")
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-swing:$coroutinesVersion")
             }
         }
     }
