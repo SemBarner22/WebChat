@@ -40,11 +40,11 @@ class App(private val sdk: WebChatSDK): Screen {
         val state by relaunchModel.state.collectAsState()
 
         if (state.isEmpty()) {
-            Text("kek")
+            Text("no data")
         } else {
             LazyColumn {
                 items(state) {
-                    Text(it.missionName + it.details + it.launchDateUTC)
+                    Text("${it.missionName} ${it.details} ${it.launchDateUTC}")
                 }
             }
         }

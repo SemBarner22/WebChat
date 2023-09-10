@@ -8,10 +8,11 @@ import io.ktor.client.request.*
 import io.ktor.serialization.kotlinx.json.*
 import kotlinx.serialization.json.Json
 
+expect fun getHttpClient(): HttpClient
+
 class WebChatApi {
 
-    // Is it true that HttpClient would be different for different platforms?
-    private val httpClient = HttpClient {
+    private val httpClient: HttpClient = getHttpClient().config {
         install(ContentNegotiation) {
             json(Json {
                 ignoreUnknownKeys = true
